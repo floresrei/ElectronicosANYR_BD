@@ -1,0 +1,213 @@
+﻿@model IEnumerable<ElectronicosANYR_BD.AppMVC.Models.Marca>
+
+@{
+    ViewData["Title"] = "Gestión de Marcas";
+}
+
+<style>
+    :root {
+        --primario: #243f82;
+        --acento: #ff7e21;
+        --fondo: #f8fafc;
+        --texto: #334155;
+    }
+
+    body {
+        background-color: var(--fondo);
+        color: var(--texto);
+    }
+
+    /* Contenedor Principal estilo Tarjeta */
+    .admin-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        margin-top: 2rem;
+    }
+
+    .header-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #e2e8f0;
+        padding-bottom: 1rem;
+    }
+
+    h1 {
+        color: var(--primario);
+        font-weight: 700;
+        margin: 0;
+        font-size: 1.8rem;
+    }
+
+    /* Botón Crear */
+    .btn-create {
+        background-color: var(--acento);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+        .btn-create:hover {
+            background-color: #ea580c;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+
+    /* Estilos de la Tabla */
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .custom-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+    }
+
+        .custom-table thead {
+            background-color: var(--primario);
+            color: white;
+        }
+
+        .custom-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .custom-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: middle;
+        }
+
+        .custom-table tbody tr:hover {
+            background-color: #f1f5f9;
+            transition: 0.2s;
+        }
+
+    /* Badge para el Sitio Web (Efecto Azul/Gris) */
+    .web-badge {
+        display: inline-block;
+        background-color: #eef2f7;
+        color: #506690;
+        padding: 4px 12px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        border: 1px solid #dbe3ed;
+        text-decoration: none;
+    }
+
+    /* Botones de Acción */
+    .action-links {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+    }
+
+        .action-links a {
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: 0.2s;
+            font-weight: 600;
+        }
+
+    .link-edit {
+        color: #4e82f3;
+        background: #f0f5ff;
+    }
+
+    .link-details {
+        color: #3dbb84;
+        background: #e8f7f0;
+    }
+
+    .link-delete {
+        color: #ff5c5c;
+        background: #fff0f0;
+    }
+
+    .action-links a:hover {
+        transform: scale(1.05);
+        filter: brightness(0.95);
+    }
+</style>
+
+<div class="container">
+    <div class="admin-card">
+        <div class="header-flex">
+            <div>
+                <h1>🏷️ MARCAS</h1>
+                <p class="text-muted" style="margin-bottom:0;">Gestión de fabricantes y proveedores</p>
+            </div>
+            <a asp-action="Create" class="btn-create">
+                <span>+</span> Nueva Marca
+            </a>
+        </div>
+
+        <div class="table-container">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">@Html.DisplayNameFor(model => model.Nombre)</th>
+                        <th style="width: 20%;">@Html.DisplayNameFor(model => model.PaisOrigen)</th>
+                        <th style="width: 25%;">@Html.DisplayNameFor(model => model.SitioWeb)</th>
+                        <th style="width: 15%; text-align: center;">Registro</th>
+                        <th style="width: 15%; text-align: center;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="font-weight: 700; color: var(--primario); font-size: 1.05rem;">
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td>
+                                <span class="text-muted">@Html.DisplayFor(modelItem => item.PaisOrigen)</span>
+                            </td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(item.SitioWeb))
+                                {
+                                    <a href="@item.SitioWeb" target="_blank" class="web-badge">
+                                        🌐 Visitar Sitio
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="text-muted small">No disponible</span>
+                                }
+                            </td>
+                            <td style="text-align: center; font-size: 0.85rem; color: #64748b;">
+                                @Html.DisplayFor(modelItem => item.FechaRegistro)
+                            </td>
+                            <td>
+                                <div class="action-links">
+                                    <a asp-action="Edit" asp-route-id="@item.MarcaId" class="link-edit">Editar</a>
+                                    <a asp-action="Details" asp-route-id="@item.MarcaId" class="link-details">Ver</a>
+                                    <a asp-action="Delete" asp-route-id="@item.MarcaId" class="link-delete">Borrar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

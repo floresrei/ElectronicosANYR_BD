@@ -1,0 +1,152 @@
+﻿@model ElectronicosANYR_BD.AppMVC.Models.Marca
+
+@{
+    ViewData["Title"] = "Nueva Marca";
+}
+
+<style>
+    :root {
+        --primario: #243f82;
+        --acento: #ff7e21;
+        --fondo: #f8fafc;
+        --texto: #334155;
+    }
+
+    body {
+        background-color: var(--fondo);
+        color: var(--texto);
+    }
+
+    .admin-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        margin-top: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .header-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #e2e8f0;
+        padding-bottom: 1rem;
+    }
+
+    h1 {
+        color: var(--primario);
+        font-weight: 700;
+        margin: 0;
+        font-size: 1.8rem;
+    }
+
+    /* Estilo de los Inputs */
+    .form-label {
+        font-weight: 700;
+        color: var(--primario);
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        border: 1px solid #dbe3ed;
+        padding: 0.75rem;
+        transition: all 0.2s;
+    }
+
+        .form-control:focus {
+            border-color: var(--primario);
+            box-shadow: 0 0 0 3px rgba(36, 63, 130, 0.1);
+            outline: none;
+        }
+
+    /* Botones */
+    .btn-save {
+        background-color: var(--acento);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 8px;
+        border: none;
+        font-weight: bold;
+        transition: 0.3s;
+        width: 100%;
+        cursor: pointer;
+    }
+
+        .btn-save:hover {
+            background-color: #ea580c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+
+    .btn-back {
+        display: block;
+        text-align: center;
+        margin-top: 1.5rem;
+        color: #64748b;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+        .btn-back:hover {
+            color: var(--primario);
+        }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+</style>
+
+<div class="container">
+    <div class="admin-card">
+        <div class="header-flex">
+            <div>
+                <h1>🏷️ NUEVA MARCA</h1>
+                <p class="text-muted" style="margin-bottom:0;">Registre una nueva marca en el sistema</p>
+            </div>
+           
+        </div>
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+
+            <div class="form-group">
+                <label asp-for="Nombre" class="form-label"></label>
+                <input asp-for="Nombre" class="form-control" placeholder="" />
+                <span asp-validation-for="Nombre" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PaisOrigen" class="form-label"></label>
+                <input asp-for="PaisOrigen" class="form-control" placeholder="" />
+                <span asp-validation-for="PaisOrigen" class="text-danger small"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SitioWeb" class="form-label"></label>
+                <input asp-for="SitioWeb" class="form-control" placeholder="" />
+                <span asp-validation-for="SitioWeb" class="text-danger small"></span>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn-save">Crear Registro</button>
+                <a asp-action="Index" class="btn-back"> Volver al Listado</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

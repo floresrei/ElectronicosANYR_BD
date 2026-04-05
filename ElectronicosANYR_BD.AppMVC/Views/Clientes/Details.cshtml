@@ -1,0 +1,177 @@
+﻿@model ElectronicosANYR_BD.AppMVC.Models.Cliente
+
+@{
+    ViewData["Title"] = "Detalles del Cliente";
+}
+
+<style>
+    :root {
+        --primario: #243f82;
+        --acento: #ff7e21;
+        --fondo: #f8fafc;
+        --texto: #334155;
+    }
+
+    body {
+        background-color: var(--fondo);
+        color: var(--texto);
+    }
+
+    .admin-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        margin-top: 2rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .header-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #e2e8f0;
+        padding-bottom: 1rem;
+    }
+
+    h1 {
+        color: var(--primario);
+        font-weight: 700;
+        margin: 0;
+        font-size: 1.8rem;
+    }
+
+    /* Estilo de etiquetas y datos */
+    .info-group {
+        margin-bottom: 1.5rem;
+        display: flex;
+        border-bottom: 1px solid #f1f5f9;
+        padding-bottom: 0.8rem;
+    }
+
+    .info-label {
+        font-weight: 700;
+        color: var(--primario);
+        width: 30%;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+
+    .info-value {
+        width: 70%;
+        color: #475569;
+        font-size: 1rem;
+    }
+
+    /* Badge para el Email */
+    .contact-badge {
+        display: inline-block;
+        background-color: #eef2f7;
+        color: #506690;
+        padding: 4px 12px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border: 1px solid #dbe3ed;
+    }
+
+    /* Botones */
+    .action-buttons {
+        margin-top: 2rem;
+        display: flex;
+        gap: 12px;
+    }
+
+    .btn-edit {
+        background-color: var(--acento);
+        color: white;
+        padding: 10px 25px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+        .btn-edit:hover {
+            background-color: #ea580c;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+
+    .btn-back {
+        background-color: #f1f5f9;
+        color: #64748b;
+        padding: 10px 25px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        border: 1px solid #e2e8f0;
+    }
+
+        .btn-back:hover {
+            background-color: #e2e8f0;
+            color: #334155;
+        }
+</style>
+
+<div class="container">
+    <div class="admin-card">
+        <div class="header-flex">
+            <div>
+                <h1>👤 DETALLES DEL CLIENTE</h1>
+                <p class="text-muted" style="margin-bottom:0;">Información completa del registro</p>
+            </div>
+        </div>
+
+        <div class="info-container">
+            <div class="info-group">
+                <div class="info-label">@Html.DisplayNameFor(model => model.Nombre)</div>
+                <div class="info-value">@Html.DisplayFor(model => model.Nombre)</div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-label">@Html.DisplayNameFor(model => model.Apellido)</div>
+                <div class="info-value">@Html.DisplayFor(model => model.Apellido)</div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-label">@Html.DisplayNameFor(model => model.Email)</div>
+                <div class="info-value">
+                    <span class="contact-badge">@Html.DisplayFor(model => model.Email)</span>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-label">@Html.DisplayNameFor(model => model.Telefono)</div>
+                <div class="info-value">@Html.DisplayFor(model => model.Telefono)</div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-label">@Html.DisplayNameFor(model => model.Direccion)</div>
+                <div class="info-value">@Html.DisplayFor(model => model.Direccion)</div>
+            </div>
+
+            <div class="info-group">
+                <div class="info-label">@Html.DisplayNameFor(model => model.FechaRegistro)</div>
+                <div class="info-value text-muted">
+                    <i class="bi bi-calendar3"></i> @Html.DisplayFor(model => model.FechaRegistro)
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a asp-action="Edit" asp-route-id="@Model?.ClienteId" class="btn-edit">
+                Editar Datos
+            </a>
+            <a asp-action="Index" class="btn-back">
+                Volver al Listado
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@model ElectronicosANYR_BD.AppMVC.Models.Marca
+
+@{
+    ViewData["Title"] = "Editar Marca";
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-sm border-0" style="width: 100%; max-width: 400px; border-radius: 8px;">
+
+        <div class="card-header text-center py-3 border-0" style="background-color: #0d6efd; border-radius: 8px 8px 0 0;">
+            <h5 class="card-title mb-0 text-white fw-bold" style="letter-spacing: 0.5px; font-size: 1.1rem;">
+                EDITAR MARCA
+            </h5>
+        </div>
+
+        <div class="card-body p-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+                <input type="hidden" asp-for="MarcaId" />
+
+                <div class="mb-3">
+                    <label asp-for="Nombre" class="fw-bold mb-1 text-uppercase" style="font-size: 0.75rem; color: #495057;">Nombre</label>
+                    <input asp-for="Nombre" class="form-control form-control-sm" style="border-radius: 6px; padding: 0.6rem;" />
+                    <span asp-validation-for="Nombre" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PaisOrigen" class="fw-bold mb-1 text-uppercase" style="font-size: 0.75rem; color: #495057;">País de Origen</label>
+                    <input asp-for="PaisOrigen" class="form-control form-control-sm" style="border-radius: 6px; padding: 0.6rem;" />
+                    <span asp-validation-for="PaisOrigen" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="SitioWeb" class="fw-bold mb-1 text-uppercase" style="font-size: 0.75rem; color: #495057;">Sitio Web</label>
+                    <input asp-for="SitioWeb" class="form-control form-control-sm" style="border-radius: 6px; padding: 0.6rem;" />
+                    <span asp-validation-for="SitioWeb" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label class="fw-bold mb-1 text-uppercase" style="font-size: 0.75rem; color: #495057;">Fecha de Registro</label>
+                    <input type="text" class="form-control form-control-sm bg-light text-muted" readonly
+                           value="@(Model.FechaRegistro?.ToString("dd/MM/yyyy HH:mm:ss") ?? "N/A")"
+                           style="border-radius: 6px; padding: 0.6rem;" />
+                    <input type="hidden" asp-for="FechaRegistro" />
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 mb-2 fw-bold" style="background-color: #0d6efd; border-radius: 8px; border: none;">
+                    Guardar Cambios
+                </button>
+
+                <a asp-action="Index" class="btn btn-outline-secondary w-100 py-2 fw-bold" style="border-radius: 8px; font-size: 0.9rem; color: #6c757d;">
+                    Cancelar y Volver
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

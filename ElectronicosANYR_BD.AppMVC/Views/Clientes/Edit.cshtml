@@ -1,0 +1,75 @@
+﻿@model ElectronicosANYR_BD.AppMVC.Models.Cliente
+
+@{
+    ViewData["Title"] = "Editar Cliente";
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-sm border-0" style="width: 100%; max-width: 400px; border-radius: 8px;">
+
+        <div class="card-header text-center py-3 border-0" style="background-color: #0d6efd; border-radius: 8px 8px 0 0;">
+            <h5 class="card-title mb-0 text-white fw-bold" style="letter-spacing: 0.5px; font-size: 1.1rem;">
+                EDITAR CLIENTE
+            </h5>
+        </div>
+
+        <div class="card-body p-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+                <input type="hidden" asp-for="ClienteId" />
+
+                <div class="mb-3">
+                    <label asp-for="Nombre" class="fw-bold mb-1 text-uppercase" style="font-size: 0.75rem; color: #495057;">Nombre</label>
+                    <input asp-for="Nombre" class="form-control form-control-sm" style="border-radius: 6px; padding: 0.6rem;" />
+                    <span asp-validation-for="Nombre" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Apellido" class="fw-bold mb-1 text-uppercase" style="font-size: 0.75rem; color: #495057;">Apellido</label>
+                    <input asp-for="Apellido" class="form-control form-control-sm" style="border-radius: 6px; padding: 0.6rem;" />
+                    <span asp-validation-for="Apellido" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="fw-bold mb-1 text-uppercase" style="font-size: 0.75rem; color: #495057;">Email</label>
+                    <input asp-for="Email" class="form-control form-control-sm" style="border-radius: 6px; padding: 0.6rem;" />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Telefono" class="fw-bold mb-1 text-uppercase" style="font-size: 0.75rem; color: #495057;">Teléfono</label>
+                    <input asp-for="Telefono" class="form-control form-control-sm" style="border-radius: 6px; padding: 0.6rem;" />
+                    <span asp-validation-for="Telefono" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Direccion" class="fw-bold mb-1 text-uppercase" style="font-size: 0.75rem; color: #495057;">Dirección</label>
+                    <input asp-for="Direccion" class="form-control form-control-sm" style="border-radius: 6px; padding: 0.6rem;" />
+                    <span asp-validation-for="Direccion" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label class="fw-bold mb-1 text-uppercase" style="font-size: 0.75rem; color: #495057;">Fecha de Registro</label>
+                    <input type="text" class="form-control form-control-sm bg-light text-muted" readonly
+                           value="@(Model.FechaRegistro.HasValue? Model.FechaRegistro.Value.ToString("dd/MM/yyyy HH:mm:ss") : "N/A")"
+                           style="border-radius: 6px; padding: 0.6rem;" />
+                    <input type="hidden" asp-for="FechaRegistro" />
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 mb-2 fw-bold shadow-sm" style="background-color: #0d6efd; border-radius: 8px; border: none;">
+                    Guardar Cambios
+                </button>
+
+                <a asp-action="Index" class="btn btn-outline-secondary w-100 py-2 fw-bold shadow-sm" style="border-radius: 8px; font-size: 0.9rem; color: #6c757d;">
+                    Cancelar y Volver
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

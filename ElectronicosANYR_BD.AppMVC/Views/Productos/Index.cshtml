@@ -1,0 +1,160 @@
+﻿@model IEnumerable<ElectronicosANYR_BD.AppMVC.Models.Producto>
+
+@{
+    ViewData["Title"] = "Inventario de Productos";
+}
+
+<style>
+    :root {
+        --primario: #1e3a8a;
+        --acento: #f97316;
+        --fondo: #f8fafc;
+        --texto: #334155;
+    }
+
+    body { background-color: var(--fondo); color: var(--texto); }
+
+    .admin-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        margin-top: 2rem;
+    }
+
+    .header-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #e2e8f0;
+        padding-bottom: 1rem;
+    }
+
+    h1 { color: var(--primario); font-weight: 700; margin: 0; }
+
+    .btn-create {
+        background-color: var(--acento);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-create:hover { background-color: #ea580c; color: white; transform: translateY(-2px); }
+
+    .table-container { overflow-x: auto; }
+
+    .custom-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .custom-table thead { background-color: var(--primario); color: white; }
+
+    .custom-table th {
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+    }
+
+    .custom-table td { padding: 15px; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
+
+    .custom-table tbody tr:hover { background-color: #f1f5f9; }
+
+    .price-tag {
+        font-weight: bold;
+        color: var(--primario);
+        background: #dbeafe;
+        padding: 4px 10px;
+        border-radius: 20px;
+    }
+
+    .category-badge {
+        background: #e2e8f0;
+        color: #475569;
+        padding: 4px 12px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .action-links a {
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: 0.2s;
+        display: inline-block;
+        margin: 0 2px;
+    }
+
+    .link-edit { color: #2563eb; background: #eff6ff; }
+    .link-details { color: #059669; background: #ecfdf5; }
+    .link-delete { color: #dc2626; background: #fef2f2; }
+</style>
+
+<div class="container">
+    <div class="admin-card">
+        <div class="header-flex">
+            <div>
+                <h1>📦 PRODUCTOS</h1>
+                <p class="text-muted">Gestión de inventario</p>
+            </div>
+            <a asp-action="Create" class="btn-create">
+                <span>+</span> Nuevo Producto
+            </a>
+        </div>
+
+        <div class="table-container">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                        <th>@Html.DisplayNameFor(model => model.Precio)</th>
+                        <th>Fecha de Ingreso</th>
+                        <th>@Html.DisplayNameFor(model => model.Categoria)</th>
+                        <th style="text-align: center;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="font-weight: 600;">
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td>
+                                <span class="price-tag">
+                                    @item.Precio.ToString("C2")
+                                </span>
+                            </td>
+                            <td style="color: #64748b;">
+                                @item.FechaIngreso?.ToString("dd/MM/yyyy")
+                            </td>
+                            <td>
+                                <span class="category-badge">
+                                    @(item.Categoria != null ? item.Categoria.Nombre : "Sin categoría")
+                                </span>
+                            </td>
+                            <td class="action-links" style="text-align: center;">
+                                <a asp-action="Edit" asp-route-id="@item.ProductoId" class="link-edit">Editar</a>
+                                <a asp-action="Details" asp-route-id="@item.ProductoId" class="link-details">Ver</a>
+                                <a asp-action="Delete" asp-route-id="@item.ProductoId" class="link-delete">Borrar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

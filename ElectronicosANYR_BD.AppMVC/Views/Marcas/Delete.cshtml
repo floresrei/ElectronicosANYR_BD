@@ -1,0 +1,71 @@
+﻿@model ElectronicosANYR_BD.AppMVC.Models.Marca
+
+@{
+    ViewData["Title"] = "Eliminar Marca";
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-sm border-0" style="width: 100%; max-width: 400px; border-radius: 8px;">
+
+        <div class="card-header text-center py-3 border-0" style="background-color: #d13645; border-radius: 8px 8px 0 0;">
+            <h5 class="card-title mb-0 text-white fw-bold" style="font-size: 1.25rem;">
+                ¿ELIMINAR REGISTRO?
+            </h5>
+        </div>
+
+        <div class="card-body p-4">
+            <p class="text-center text-muted mb-4" style="font-size: 0.9rem; line-height: 1.4;">
+                Confirme si desea eliminar la siguiente marca de forma permanente:
+            </p>
+
+            <div class="rounded-3 p-3 mb-4" style="background-color: #f8f9fa; border: 1px solid #ebedf0;">
+                <dl class="row mb-0" style="font-size: 0.85rem;">
+
+                    <dt class="col-5 text-uppercase fw-bold mb-2" style="color: #495057; font-size: 0.75rem;">Nombre</dt>
+                    <dd class="col-7 fw-bold mb-2 text-end text-dark">@Model.Nombre</dd>
+
+                    <dt class="col-5 text-uppercase fw-bold mb-2" style="color: #495057; font-size: 0.75rem;">País</dt>
+                    <dd class="col-7 mb-2 text-end text-muted">@Model.PaisOrigen</dd>
+
+                    <dt class="col-5 text-uppercase fw-bold mb-2" style="color: #495057; font-size: 0.75rem;">Sitio Web</dt>
+                    <dd class="col-7 mb-2 text-end text-truncate text-muted">@Model.SitioWeb</dd>
+
+                    <dt class="col-5 text-uppercase fw-bold mb-0" style="color: #495057; font-size: 0.75rem;">Fecha</dt>
+                    <dd class="col-7 mb-0 text-end text-muted">
+                        @Html.DisplayFor(model => model.FechaRegistro)
+                    </dd>
+                </dl>
+            </div>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="MarcaId" />
+                <button type="submit" class="btn text-white fw-bold w-100 py-2 mb-2 shadow-sm"
+                        style="background-color: #d13645; border-radius: 8px; border: none; font-size: 1rem;">
+                    Confirmar y Eliminar
+                </button>
+            </form>
+
+            <a asp-action="Index" class="btn btn-outline-secondary w-100 py-2 fw-bold"
+               style="border-radius: 8px; font-size: 1rem; color: #6c757d;">
+                Cancelar y Volver
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Asegurar que el diseño no se rompa en móviles */
+    .card {
+        margin: 10px;
+    }
+
+    dt {
+        letter-spacing: 0.5px;
+    }
+
+    /* Quitar efectos azules por defecto de los botones */
+    .btn:focus, .btn:active {
+        box-shadow: none !important;
+        outline: none !important;
+    }
+</style>

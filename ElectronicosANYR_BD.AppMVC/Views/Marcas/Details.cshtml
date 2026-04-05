@@ -1,0 +1,70 @@
+﻿@model ElectronicosANYR_BD.AppMVC.Models.Marca
+
+@{
+    ViewData["Title"] = "Detalle de Marca";
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-sm border-0" style="width: 100%; max-width: 450px; border-radius: 8px;">
+
+        <div class="card-header text-center py-3 border-0" style="background-color: #212529; border-radius: 8px 8px 0 0;">
+            <h5 class="card-title mb-0 text-white fw-bold" style="letter-spacing: 1px; font-size: 1.1rem;">
+                DETALLE DE MARCA
+            </h5>
+        </div>
+
+        <div class="card-body p-4">
+            <p class="text-center text-muted mb-4" style="font-size: 0.9rem;">
+                Información completa almacenada en el sistema
+            </p>
+
+            <div class="rounded-2 overflow-hidden mb-4" style="border: 1px solid #f0f2f5;">
+                <dl class="row mb-0" style="font-size: 0.9rem;">
+
+                    <div class="col-12 d-flex justify-content-between p-3 border-bottom bg-white">
+                        <dt class="text-uppercase fw-bold text-muted" style="font-size: 0.75rem; letter-spacing: 0.5px;">Nombre</dt>
+                        <dd class="fw-bold mb-0 text-dark">@Model.Nombre</dd>
+                    </div>
+
+                    <div class="col-12 d-flex justify-content-between p-3 border-bottom" style="background-color: #fcfdfe;">
+                        <dt class="text-uppercase fw-bold text-muted" style="font-size: 0.75rem; letter-spacing: 0.5px;">País Origen</dt>
+                        <dd class="mb-0 text-dark">@Model.PaisOrigen</dd>
+                    </div>
+
+                    <div class="col-12 d-flex justify-content-between p-3 border-bottom bg-white">
+                        <dt class="text-uppercase fw-bold text-muted" style="font-size: 0.75rem; letter-spacing: 0.5px;">Sitio Web</dt>
+                        <dd class="mb-0 text-truncate text-primary" style="max-width: 200px;">@Model.SitioWeb</dd>
+                    </div>
+
+                    <div class="col-12 d-flex justify-content-between p-3" style="background-color: #fcfdfe;">
+                        <dt class="text-uppercase fw-bold text-muted" style="font-size: 0.75rem; letter-spacing: 0.5px;">Fecha Registro</dt>
+                        <dd class="mb-0 text-muted">
+                            @(Model.FechaRegistro.HasValue? Model.FechaRegistro.Value.ToString("dd/MM/yyyy HH:mm:ss") : "N/A")
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+
+            <div class="d-grid gap-2 mt-4">
+                <a asp-action="Edit" asp-route-id="@Model?.MarcaId" class="btn text-white fw-bold py-2 shadow-sm"
+                   style="background-color: #0d6efd; border-radius: 8px; font-size: 1.05rem;">
+                    Ir a Editar
+                </a>
+
+                <a asp-action="Index" class="btn btn-outline-secondary py-2 fw-bold"
+                   style="border-radius: 8px; font-size: 0.95rem; border-color: #ced4da; color: #6c757d;">
+                    Volver al Listado
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    
+    dt, dd {
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+</style>
