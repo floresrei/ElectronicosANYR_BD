@@ -1,276 +1,274 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center"></div>
-    <h1 class="display-4">Welcome</h1>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ELECTRONCOS | Tu Tienda de Tecnología</title>
-        <style>
-           
-            :root {
-                --color-primario: #1e3a8a; 
-                --color-secundario: #f1f5f9; 
-                --color-texto: #334155; 
-                --color-blanco: #ffffff;
-            }
+<h1 class="display-4">Welcome</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELECTRONICOS | Tu Tienda de Tecnología</title>
+    <style>
 
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+        :root {
+            --color-primario: #1e3a8a;
+            --color-secundario: #f1f5f9;
+            --color-texto: #334155;
+            --color-blanco: #ffffff;
+        }
 
-            body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                line-height: 1.6;
-                color: var(--color-texto);
-                background-color: var(--color-secundario);
-            }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-            
-            .contenedor {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 20px;
-            }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-texto);
+            background-color: var(--color-secundario);
+        }
 
-            
-            nav {
-                background: var(--color-blanco);
-                padding: 1rem 0;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-                position: sticky;
-                top: 0;
-                z-index: 1000;
-            }
 
-                nav .contenedor {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                }
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-            
-            .logo {
-                font-size: 1.8rem;
-                font-weight: bold;
-                color: var(--color-primario);
-                text-decoration: none;
+
+        nav {
+            background: var(--color-blanco);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+            nav .contenedor {
                 display: flex;
+                justify-content: space-between;
                 align-items: center;
             }
 
-                .logo::before {
-                    content: ''; 
-                    display: inline-block;
-                    width: 25px;
-                    height: 25px;
-                    background-color: var(--color-primario);
-                    margin-right: 10px;
-                    border-radius: 5px; 
-                }
 
-            .nav-links {
-                list-style: none;
-                display: flex;
-            }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--color-primario);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
 
-                .nav-links li {
-                    margin-left: 25px;
-                }
-
-                .nav-links a {
-                    text-decoration: none;
-                    color: #64748b;
-                    transition: 0.3s;
-                    font-weight: 500;
-                }
-
-                    .nav-links a:hover {
-                        color: var(--color-primario);
-                    }
-
-            .hero {
-                height: 70vh;
-                display: flex;
-                align-items: center;
-                background-color: #e2e8f0; 
-                overflow: hidden;
-            }
-
-            .hero-content {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-                align-items: center;
-            }
-
-            .hero-text h1 {
-                font-size: 3.5rem;
-                margin-bottom: 1rem;
-                color: var(--color-primario);
-                line-height: 1.2;
-            }
-
-            .hero-text p {
-                font-size: 1.25rem;
-                margin-bottom: 2rem;
-                max-width: 500px;
-                color: #475569;
-            }
-
-            .btn {
+            .logo::before {
+                content: '';
                 display: inline-block;
-                padding: 12px 30px;
-                background-color: var(--color-acento);
-                color: var(--color-blanco);
+                width: 25px;
+                height: 25px;
+                background-color: var(--color-primario);
+                margin-right: 10px;
+                border-radius: 5px;
+            }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+            .nav-links li {
+                margin-left: 25px;
+            }
+
+            .nav-links a {
                 text-decoration: none;
-                border-radius: 8px;
-                font-weight: bold;
-                transition: 0.3s;
-            }
-
-            .hero-image {
-                text-align: right;
-            }
-
-                .hero-image img {
-                    max-width: 100%;
-                    height: auto;
-                    border-radius: 10px;
-                }
-
-            
-            .categorias {
-                padding: 5rem 0;
-                background-color: var(--color-blanco);
-            }
-
-            .seccion-titulo {
-                text-align: center;
-                font-size: 2.5rem;
-                color: var(--color-primario);
-                margin-bottom: 3rem;
-            }
-
-            .grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 2.5rem;
-            }
-
-            .card {
-                background: var(--color-secundario);
-                padding: 2.5rem;
-                border-radius: 12px;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.03);
-                transition: 0.3s;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-                .card:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-                }
-
-            .card-icon {
-                font-size: 3rem;
-                color: var(--color-acento);
-                margin-bottom: 1.5rem;
-            }
-
-            .card h3 {
-                font-size: 1.5rem;
-                margin-bottom: 0.75rem;
-                color: var(--color-primario);
-            }
-
-            .card p {
                 color: #64748b;
+                transition: 0.3s;
+                font-weight: 500;
             }
 
-            
-            footer {
-                background: var(--color-primario);
-                color: var(--color-blanco);
-                padding: 3rem 0;
-                margin-top: auto;
-            }
-
-                footer .contenedor {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
+                .nav-links a:hover {
+                    color: var(--color-primario);
                 }
 
-                footer p {
-                    font-size: 0.9rem;
-                }
+        .hero {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            background-color: #e2e8f0;
+            overflow: hidden;
+        }
 
-            .footer-logo {
-                font-size: 1.5rem;
-                font-weight: bold;
-                color: var(--color-blanco);
-                text-decoration: none;
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-primario);
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            color: #475569;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--color-acento);
+            color: var(--color-blanco);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .hero-image {
+            text-align: right;
+        }
+
+            .hero-image img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px;
             }
-        </style>
-    </head>
-    <body>
 
-        <nav>
-            <div class="contenedor">
-                <a href="#" class="logo">ELECTRONICOS</a>
-               
+
+        .categorias {
+            padding: 5rem 0;
+            background-color: var(--color-blanco);
+        }
+
+        .seccion-titulo {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--color-primario);
+            margin-bottom: 3rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--color-secundario);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+            }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--color-acento);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-primario);
+        }
+
+        .card p {
+            color: #64748b;
+        }
+
+
+        footer {
+            background: var(--color-primario);
+            color: var(--color-blanco);
+            padding: 3rem 0;
+            margin-top: auto;
+        }
+
+            footer .contenedor {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+            }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--color-blanco);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="contenedor">
+            <a href="#" class="logo">ELECTRONICOS</a>
+
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="contenedor hero-content">
+            <div class="hero-text">
+                <h1>La Mejor Tecnología a Tu Alcance</h1>
+                <p>En ELECTRONICOS encontrarás lo último en smartphones, portátiles y accesorios con garantía oficial.</p>
+
             </div>
-        </nav>
+            <div class="hero-image">
+                <div style="width: 100%; height: 300px; background-color: #cbd5e1; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #475569;">[Imagen Destacada]</div>
+            </div>
+        </div>
+    </header>
 
-        <header class="hero">
-            <div class="contenedor hero-content">
-                <div class="hero-text">
-                    <h1>La Mejor Tecnología a Tu Alcance</h1>
-                    <p>En ELECTRONICOS encontrarás lo último en smartphones, portátiles y accesorios con garantía oficial.</p>
-               
+    <section class="categorias">
+        <div class="contenedor">
+            <h2 class="seccion-titulo">Nuestras Categorías</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">📱</div>
+                    <h3>Smartphones</h3>
+                    <p>Las últimas novedades de las marcas líderes del mercado.</p>
                 </div>
-                <div class="hero-image">
-                    <div style="width: 100%; height: 300px; background-color: #cbd5e1; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #475569;">[Imagen Destacada]</div>
+                <div class="card">
+                    <div class="card-icon">💻</div>
+                    <h3>Portátiles</h3>
+                    <p>Equipos potentes para trabajo, estudio o gaming.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎧</div>
+                    <h3>Accesorios</h3>
+                    <p>Auriculares, smartwatches, cargadores y mucho más.</p>
                 </div>
             </div>
-        </header>
+        </div>
+    </section>
 
-        <section class="categorias">
-            <div class="contenedor">
-                <h2 class="seccion-titulo">Nuestras Categorías</h2>
-                <div class="grid">
-                    <div class="card">
-                        <div class="card-icon">📱</div>
-                        <h3>Smartphones</h3>
-                        <p>Las últimas novedades de las marcas líderes del mercado.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">💻</div>
-                        <h3>Portátiles</h3>
-                        <p>Equipos potentes para trabajo, estudio o gaming.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">🎧</div>
-                        <h3>Accesorios</h3>
-                        <p>Auriculares, smartwatches, cargadores y mucho más.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <div class="contenedor">
-                <a href="#" class="footer-logo">ELECTRONCOS</a>
-                <p>&copy; 2026 ELECTRONCOS. Todos los derechos reservados.</p>
-            </div>
-        </footer>
-
-    </body>
+    <footer>
+        <div class="contenedor">
+            <p>&copy; 2026 ELECTRONICOS. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
