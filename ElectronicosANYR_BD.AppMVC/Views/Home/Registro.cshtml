@@ -7,13 +7,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELECTRONICOS | Registro</title>
+    <title>ELECTRONICOS | Crear Cuenta</title>
     <style>
         :root {
             --color-primario: #0f172a;
             --color-acento: #3b82f6;
             --color-borde: #cbd5e1;
-            --color-texto: #1e293b;
             --color-blanco: #ffffff;
         }
 
@@ -29,17 +28,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
         }
 
-        .login-card {
+        .register-card {
             background: white;
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
         }
 
         h2 {
@@ -56,13 +55,13 @@
         }
 
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 15px;
         }
 
         label {
             display: block;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             font-size: 0.85rem;
             color: #475569;
         }
@@ -73,38 +72,31 @@
             border: 1px solid var(--color-borde);
             border-radius: 10px;
             font-size: 1rem;
-            transition: 0.3s;
         }
 
-            input:focus {
-                outline: none;
-                border-color: var(--color-acento);
-                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-            }
-
-        .btn-submit {
+        .btn-register {
             width: 100%;
             padding: 14px;
-            background: var(--color-acento);
+            background: #22c55e; /* Verde para diferenciarlo del login */
             color: white;
             border: none;
             border-radius: 10px;
             font-weight: bold;
             cursor: pointer;
             font-size: 1rem;
+            margin-top: 10px;
             transition: 0.3s;
         }
 
-            .btn-submit:hover {
-                background: #2563eb;
+            .btn-register:hover {
+                background: #16a34a;
                 transform: translateY(-1px);
             }
 
         .footer-card {
-            margin-top: 25px;
+            margin-top: 20px;
             text-align: center;
             font-size: 0.9rem;
-            color: #64748b;
             border-top: 1px solid #f1f5f9;
             padding-top: 20px;
         }
@@ -114,44 +106,33 @@
                 text-decoration: none;
                 font-weight: bold;
             }
-
-        .error-msg {
-            background: #fee2e2;
-            color: #ef4444;
-            padding: 12px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.85rem;
-        }
     </style>
 </head>
 <body>
 
-    <div class="login-card">
-        <h2>Bienvenido</h2>
-        <p class="subtitle">Ingresa tus credenciales de ELECTRONICOS</p>
+    <div class="register-card">
+        <h2>Crear Cuenta</h2>
+        <p class="subtitle">Únete a la comunidad de ELECTRONICOS</p>
 
-        <form asp-controller="Home" asp-action="Validar" method="post">
+        <form asp-controller="Home" asp-action="ProcesarRegistro" method="post">
+            <div class="form-group">
+                <label>Nombre Completo</label>
+                <input type="text" name="nombre" placeholder="Tu nombre" required>
+            </div>
             <div class="form-group">
                 <label>Correo Electrónico</label>
                 <input type="email" name="correo" placeholder="ejemplo@correo.com" required>
             </div>
             <div class="form-group">
                 <label>Contraseña</label>
-                <input type="password" name="password" placeholder="••••••••" required>
+                <input type="password" name="password" placeholder="Mínimo 6 caracteres" required>
             </div>
 
-            <button type="submit" class="btn-submit">Iniciar Sesión</button>
+            <button type="submit" class="btn-register">Registrarme</button>
         </form>
 
-        @if (ViewBag.Error != null)
-        {
-            <div class="error-msg">@ViewBag.Error</div>
-        }
-
         <div class="footer-card">
-            ¿No tienes una cuenta? <a asp-controller="Home" asp-action="Registro">Crear cuenta ahora</a>
+            ¿Ya tienes cuenta? <a asp-controller="Home" asp-action="Bienvenido">Inicia sesión</a>
         </div>
     </div>
 
