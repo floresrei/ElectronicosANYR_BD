@@ -77,7 +77,7 @@
         .btn-register {
             width: 100%;
             padding: 14px;
-            background: #22c55e; /* Verde para diferenciarlo del login */
+            background: #22c55e;
             color: white;
             border: none;
             border-radius: 10px;
@@ -91,6 +91,22 @@
             .btn-register:hover {
                 background: #16a34a;
                 transform: translateY(-1px);
+            }
+
+        .btn-return {
+            display: block;
+            text-align: center;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+            .btn-return:hover {
+                color: var(--color-primario);
             }
 
         .footer-card {
@@ -116,19 +132,28 @@
 
         <form asp-controller="Home" asp-action="ProcesarRegistro" method="post">
             <div class="form-group">
-                <label>Nombre Completo</label>
-                <input type="text" name="nombre" placeholder="Tu nombre" required>
+                <label>Nombre</label>
+                <input type="text" name="nombre" placeholder="" required>
             </div>
+
+            <div class="form-group">
+                <label>Apellido</label>
+                <input type="text" name="apellido" placeholder="" required>
+            </div>
+
             <div class="form-group">
                 <label>Correo Electrónico</label>
-                <input type="email" name="correo" placeholder="ejemplo@correo.com" required>
+                <input type="email" name="correo" placeholder="" required>
             </div>
+
             <div class="form-group">
                 <label>Contraseña</label>
-                <input type="password" name="password" placeholder="Mínimo 6 caracteres" required>
+                <input type="password" name="password" placeholder="" required>
             </div>
 
             <button type="submit" class="btn-register">Registrarme</button>
+
+            <a asp-controller="Clientes" asp-action="Cliente" class="btn-return">Volver al Inicio</a>
         </form>
 
         <div class="footer-card">

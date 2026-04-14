@@ -12,7 +12,10 @@
         --texto: #334155;
     }
 
-    body { background-color: var(--fondo); color: var(--texto); }
+    body {
+        background-color: var(--fondo);
+        color: var(--texto);
+    }
 
     .admin-card {
         background: white;
@@ -31,7 +34,42 @@
         padding-bottom: 1rem;
     }
 
-    h1 { color: var(--primario); font-weight: 700; margin: 0; }
+    h1 {
+        color: var(--primario);
+        font-weight: 700;
+        margin: 0;
+    }
+
+    /* --- ESTILOS DEL BUSCADOR --- */
+    .search-container {
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 12px 20px 12px 45px;
+        border: 2px solid #e2e8f0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: 0.3s;
+        outline: none;
+    }
+
+        .search-input:focus {
+            border-color: var(--primario);
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+    .search-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.1rem;
+        filter: grayscale(1);
+    }
+    /* ---------------------------- */
 
     .btn-create {
         background-color: var(--acento);
@@ -46,9 +84,15 @@
         gap: 8px;
     }
 
-    .btn-create:hover { background-color: #ea580c; color: white; transform: translateY(-2px); }
+        .btn-create:hover {
+            background-color: #ea580c;
+            color: white;
+            transform: translateY(-2px);
+        }
 
-    .table-container { overflow-x: auto; }
+    .table-container {
+        overflow-x: auto;
+    }
 
     .custom-table {
         width: 100%;
@@ -58,19 +102,28 @@
         overflow: hidden;
     }
 
-    .custom-table thead { background-color: var(--primario); color: white; }
+        .custom-table thead {
+            background-color: var(--primario);
+            color: white;
+        }
 
-    .custom-table th {
-        padding: 15px;
-        text-align: left;
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 0.85rem;
-    }
+        .custom-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
 
-    .custom-table td { padding: 15px; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
+        .custom-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: middle;
+        }
 
-    .custom-table tbody tr:hover { background-color: #f1f5f9; }
+        .custom-table tbody tr:hover {
+            background-color: #f1f5f9;
+        }
 
     .price-tag {
         font-weight: bold;
@@ -98,9 +151,20 @@
         margin: 0 2px;
     }
 
-    .link-edit { color: #2563eb; background: #eff6ff; }
-    .link-details { color: #059669; background: #ecfdf5; }
-    .link-delete { color: #dc2626; background: #fef2f2; }
+    .link-edit {
+        color: #2563eb;
+        background: #eff6ff;
+    }
+
+    .link-details {
+        color: #059669;
+        background: #ecfdf5;
+    }
+
+    .link-delete {
+        color: #dc2626;
+        background: #fef2f2;
+    }
 </style>
 
 <div class="container">
@@ -115,8 +179,13 @@
             </a>
         </div>
 
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="inputBuscador" class="search-input" placeholder="Buscar por nombre, categoría o precio...">
+        </div>
+
         <div class="table-container">
-            <table class="custom-table">
+            <table class="custom-table" id="tablaProductos">
                 <thead>
                     <tr>
                         <th>@Html.DisplayNameFor(model => model.Nombre)</th>
@@ -158,3 +227,16 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Lógica del buscador para la tabla de Productos
+    document.getElementById('inputBuscador').addEventListener('keyup', function() {
+        const busqueda = this.value.toLowerCase();
+        const filas = document.querySelectorAll('#tablaProductos tbody tr');
+
+        filas.forEach(fila => {
+            const textoFila = fila.innerText.toLowerCase();
+            fila.style.display = textoFila.includes(busqueda) ? '' : 'none';
+        });
+    });
+</script>

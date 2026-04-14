@@ -18,7 +18,7 @@
 
                         <div class="form-group mb-3">
                             <label asp-for="Nombre" class="form-label fw-bold small text-uppercase text-muted"></label>
-                            <input asp-for="Nombre" class="form-control" placeholder="Ej: Smartphone Samsung G24" />
+                            <input asp-for="Nombre" class="form-control" placeholder="" />
                             <span asp-validation-for="Nombre" class="text-danger small"></span>
                         </div>
 
@@ -34,7 +34,7 @@
                         <div class="form-group mb-4">
                             <label asp-for="CategoriaId" class="form-label fw-bold small text-uppercase text-muted">Categoría</label>
                             <select asp-for="CategoriaId" class="form-select" asp-items="ViewBag.CategoriaId">
-                                <option value="">-- Seleccione una categoría --</option>
+                                <option value=""></option>
                             </select>
                             <span asp-validation-for="CategoriaId" class="text-danger small"></span>
                         </div>
