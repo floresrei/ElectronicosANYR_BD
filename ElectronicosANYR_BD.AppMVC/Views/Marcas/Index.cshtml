@@ -42,6 +42,36 @@
         font-size: 1.8rem;
     }
 
+    /* --- ESTILOS DEL BUSCADOR --- */
+    .search-container {
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 12px 20px 12px 45px;
+        border: 2px solid #e2e8f0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: 0.3s;
+        outline: none;
+    }
+
+        .search-input:focus {
+            border-color: var(--primario);
+            box-shadow: 0 0 0 3px rgba(36, 63, 130, 0.1);
+        }
+
+    .search-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.1rem;
+        filter: grayscale(1);
+    }
+
     /* Botón Crear */
     .btn-create {
         background-color: var(--acento);
@@ -99,7 +129,7 @@
             transition: 0.2s;
         }
 
-    /* Badge para el Sitio Web (Efecto Azul/Gris) */
+    /* Badge para el Sitio Web */
     .web-badge {
         display: inline-block;
         background-color: #eef2f7;
@@ -161,8 +191,13 @@
             </a>
         </div>
 
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="inputBuscador" class="search-input" placeholder="Buscar por nombre o país de origen...">
+        </div>
+
         <div class="table-container">
-            <table class="custom-table">
+            <table class="custom-table" id="tablaMarcas">
                 <thead>
                     <tr>
                         <th style="width: 25%;">@Html.DisplayNameFor(model => model.Nombre)</th>
@@ -211,3 +246,16 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Lógica del buscador para la tabla de Marcas
+    document.getElementById('inputBuscador').addEventListener('keyup', function() {
+        const busqueda = this.value.toLowerCase();
+        const filas = document.querySelectorAll('#tablaMarcas tbody tr');
+
+        filas.forEach(fila => {
+            const textoFila = fila.innerText.toLowerCase();
+            fila.style.display = textoFila.includes(busqueda) ? '' : 'none';
+        });
+    });
+</script>
